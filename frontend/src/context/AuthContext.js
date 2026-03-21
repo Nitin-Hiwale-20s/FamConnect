@@ -8,7 +8,8 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('fc_token'));
   const [loading, setLoading] = useState(true);
 
-  axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+  // axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+  axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'https://famconnect.onrender.com';
   if (token) axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
   useEffect(() => {
