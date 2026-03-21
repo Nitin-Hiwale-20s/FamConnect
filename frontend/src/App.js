@@ -1,0 +1,84 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
+import { ThemeProvider } from './context/ThemeContext';
+
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import ShopPage from './pages/ShopPage';
+import ProductDetail from './pages/ProductDetail';
+import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
+import OrdersPage from './pages/OrdersPage';
+import OrderDetail from './pages/OrderDetail';
+import SettingsPage from './pages/SettingsPage';
+
+import FarmerDashboard from './pages/Farmer/FarmerDashboard';
+import FarmerProducts from './pages/Farmer/FarmerProducts';
+import AddProduct from './pages/Farmer/AddProduct';
+import FarmerOrders from './pages/Farmer/FarmerOrders';
+
+import AdminDashboard from './pages/Admin/AdminDashboard';
+import AdminUsers from './pages/Admin/AdminUsers';
+import AdminProducts from './pages/Admin/AdminProducts';
+import AdminOrders from './pages/Admin/AdminOrders';
+
+import DeliveryDashboard from './pages/Delivery/DeliveryDashboard';
+import DeliveryOrders from './pages/Delivery/DeliveryOrders';
+
+const ProtectedRoute = ({ children, roles }) => {
+  const { user, loading } = useAuth();
+  if (loading) return (
+    <div style={{ display:'flex',alignItems:'center',justifyContent:'center',minHeight:'100vh',background:'#f8fafc' }}>
+      <div style={{ textAlign:'center' }}>
+        <div style={{ fontSize:'3rem',marginBottom:'1rem' }}>🌾</div>
+        <div style={{ width:'40px',height:'40px',border:'3px solid #e2e8f0',borderTopColor:'#16a34a',borderRadius:'50%',animation:'spin 0.8s linear infinite',margin:'0 auto' }}></div>
+      </div>
+    </div>
+  );
+  if (!user) return <Navigate to="/login" />;
+  if (roles && !roles.includes(user.role)) return <Navigate to="/" />;
+  return children;
+};
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AuthProvider>
+        <CartProvider>
+          <Router>
+            <ToastContainer position="top-right" autoClose={3000} theme="colored" />
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/shop" element={<ShopPage />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/cart" element={<ProtectedRoute roles={['buyer']}><CartPage /></ProtectedRoute>} />
+              <Route path="/checkout" element={<ProtectedRoute roles={['buyer']}><CheckoutPage /></ProtectedRoute>} />
+              <Route path="/orders" element={<ProtectedRoute roles={['buyer']}><OrdersPage /></ProtectedRoute>} />
+              <Route path="/orders/:id" element={<ProtectedRoute><OrderDetail /></ProtectedRoute>} />
+              <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
+              <Route path="/farmer" element={<ProtectedRoute roles={['farmer']}><FarmerDashboard /></ProtectedRoute>} />
+              <Route path="/farmer/products" element={<ProtectedRoute roles={['farmer']}><FarmerProducts /></ProtectedRoute>} />
+              <Route path="/farmer/products/add" element={<ProtectedRoute roles={['farmer']}><AddProduct /></ProtectedRoute>} />
+              <Route path="/farmer/orders" element={<ProtectedRoute roles={['farmer']}><FarmerOrders /></ProtectedRoute>} />
+              <Route path="/admin" element={<ProtectedRoute roles={['admin']}><AdminDashboard /></ProtectedRoute>} />
+              <Route path="/admin/users" element={<ProtectedRoute roles={['admin']}><AdminUsers /></ProtectedRoute>} />
+              <Route path="/admin/products" element={<ProtectedRoute roles={['admin']}><AdminProducts /></ProtectedRoute>} />
+              <Route path="/admin/orders" element={<ProtectedRoute roles={['admin']}><AdminOrders /></ProtectedRoute>} />
+              <Route path="/delivery" element={<ProtectedRoute roles={['delivery']}><DeliveryDashboard /></ProtectedRoute>} />
+              <Route path="/delivery/orders" element={<ProtectedRoute roles={['delivery']}><DeliveryOrders /></ProtectedRoute>} />
+            </Routes>
+          </Router>
+        </CartProvider>
+      </AuthProvider>
+    </ThemeProvider>
+  );
+}
+
+export default App;
