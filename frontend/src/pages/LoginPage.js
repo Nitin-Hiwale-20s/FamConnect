@@ -59,11 +59,7 @@ const LoginPage = () => {
           <p style={{ textAlign: 'center', marginTop: '1.5rem', color: c.subText, fontSize: '0.9rem' }}>
             {t.auth.noAccount} <Link to="/register" style={{ color: '#16a34a', fontWeight: 600, textDecoration: 'none' }}>{t.nav.register}</Link>
           </p>
-          <div style={{ marginTop: '1.5rem', background: theme.isDark ? '#334155' : '#f9fafb', borderRadius: '10px', padding: '1rem', border: `1px solid ${c.border}` }}>
-            <p style={{ fontWeight: 600, fontSize: '0.78rem', color: c.subText, marginBottom: '0.4rem' }}>Demo accounts:</p>
-            <p style={{ fontSize: '0.75rem', color: c.subText, marginBottom: '0.2rem' }}>Admin: admin@farm.com / admin123</p>
-            <p style={{ fontSize: '0.75rem', color: c.subText }}>Farmer: farmer@farm.com / farmer123</p>
-          </div>
+         
         </div>
       </div>
     </div>
