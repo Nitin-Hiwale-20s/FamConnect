@@ -58,18 +58,25 @@ const LandingPage = () => {
       </section>
 
       {/* Benefits */}
-      <section style={{ padding: 'clamp(2rem,5vw,5rem) 1.5rem', background: isDark ? '#1e293b' : '#f0fdf4' }}>
-        <h2 style={{ fontSize: 'clamp(1.4rem,3vw,2rem)', fontWeight: 700, textAlign: 'center', marginBottom: '2rem', color: c.text }}>FarmConnect चे फायदे</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))', gap: '1.2rem', maxWidth: '1100px', margin: '0 auto' }}>
-          {[['💰','शेतकऱ्याला जास्त पैसे','दलाल नसल्याने पूर्ण किंमत मिळते'],['🌿','ताजा माल','शेतातून थेट घरी'],['📱','Real-time Tracking','Order live track करा'],['⭐','Reviews & Ratings','Quality guarantee'],['🔒','Verified Farmers','Admin verified शेतकरी'],['🚚','Fast Delivery','2 दिवसात delivery']].map(([icon,title,desc],i) => (
-            <div key={i} style={{ borderRadius: '14px', padding: '1.3rem', background: c.cardBg, border: `1px solid ${c.border}`, boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
-              <div style={{ fontSize: '1.8rem', marginBottom: '0.6rem' }}>{icon}</div>
-              <h3 style={{ fontWeight: 700, marginBottom: '0.3rem', fontSize: '0.9rem', color: c.text }}>{title}</h3>
-              <p style={{ fontSize: '0.82rem', lineHeight: 1.6, color: c.subText }}>{desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+     <section style={{ padding: 'clamp(2rem,5vw,5rem) 1.5rem', background: isDark ? '#1e293b' : '#f0fdf4' }}>
+  <h2 style={{ fontSize: 'clamp(1.4rem,3vw,2rem)', fontWeight: 700, textAlign: 'center', marginBottom: '2rem', color: c.text }}>Benefits of FarmConnect</h2>
+  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))', gap: '1.2rem', maxWidth: '1100px', margin: '0 auto' }}>
+    {[
+      ['💰', 'More Earnings for Farmers', 'Get full price with no middlemen'],
+      ['🌿', 'Fresh Produce', 'Direct from farm to your home'],
+      ['📱', 'Real-time Tracking', 'Track your order live'],
+      ['⭐', 'Reviews & Ratings', 'Quality guarantee'],
+      ['🔒', 'Verified Farmers', 'Admin verified farmers'],
+      ['🚚', 'Fast Delivery', 'Delivery within 2 days']
+    ].map(([icon, title, desc], i) => (
+      <div key={i} style={{ borderRadius: '14px', padding: '1.3rem', background: c.cardBg, border: `1px solid ${c.border}`, boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
+        <div style={{ fontSize: '1.8rem', marginBottom: '0.6rem' }}>{icon}</div>
+        <h3 style={{ fontWeight: 700, marginBottom: '0.3rem', fontSize: '0.9rem', color: c.text }}>{title}</h3>
+        <p style={{ fontSize: '0.82rem', lineHeight: 1.6, color: c.subText }}>{desc}</p>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* Roles */}
       <section style={{ padding: 'clamp(2rem,5vw,5rem) 1.5rem', background: c.bg }}>
