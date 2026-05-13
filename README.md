@@ -1,8 +1,9 @@
-# 🌾 FarmConnect - शेतकरी ते ग्राहक थेट
+# 🌾 FarmConnect - Direct From Farmers to Customers
 
-> **दलाल नाही, फसवणूक नाही — शेतकरी स्वतः किंमत ठरवतो**
+> **No middlemen, no fraud — farmers set their own prices**
 
-FarmConnect एक MERN stack web application आहे जे शेतकरी आणि ग्राहक यांना थेट जोडते. दलाल (middleman) शिवाय शेतकरी आपला भाजीपाला/फळे विकू शकतो.
+FarmConnect is a MERN stack web application that directly connects farmers and customers. Without any middlemen, farmers can sell their vegetables and fruits directly to customers at their own prices.
+
 
 ---
 
